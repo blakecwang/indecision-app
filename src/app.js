@@ -1,17 +1,17 @@
-var app = {
+const app = {
   title: 'Indecision App',
   subtitle: 'what to do, what to do, what to do...',
   options: ['One', 'Two']
 };
 
-var options = (
+const options = (
   <ol>
     <li>item 1</li>
     <li>itme 2</li>
   </ol>
 )
 
-var template = (
+const template = (
   <div>
     <h1>{app.title}</h1>
     {app.subtitle && <p>{app.subtitle}</p>}
@@ -19,26 +19,38 @@ var template = (
   </div>
 );
 
-var user = {
-  name: 'Blake Wang',
-  age: 30,
-  location: 'San Diego'
+
+
+let count = 0;
+
+const increment = () => {
+  count++;
+  renderCounterApp();
 };
 
-function getLocation(location) {
-  if (location) {
-    return <p>Location: {location}</p>;
-  }
+const decrement = () => {
+  count--;
+  renderCounterApp();
+};
+
+const reset = () => {
+  count = 0;
+  renderCounterApp();
+};
+
+const appRoot = document.getElementById("app");
+
+const renderCounterApp = () => {
+  const templateTwo = (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={increment}>+1</button>
+      <button onClick={decrement}>-1</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+  //ReactDOM.render(template, appRoot);
+  ReactDOM.render(templateTwo, appRoot);
 }
 
-var templateTwo = (
-  <div>
-    <h1>{user.name ? user.name : 'Anonymous'}!</h1>
-    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-    {getLocation(user.location)}
-  </div>
-);
-
-var appRoot = document.getElementById("app");
-ReactDOM.render(template, appRoot);
-//ReactDOM.render(templateTwo, appRoot);
+renderCounterApp();

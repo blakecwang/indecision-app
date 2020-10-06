@@ -1,56 +1,56 @@
-const app = {
-  title: 'Indecision App',
-  subtitle: 'what to do, what to do, what to do...',
-  options: ['One', 'Two']
-};
+console.log('hello');
 
-const options = (
-  <ol>
-    <li>item 1</li>
-    <li>itme 2</li>
-  </ol>
-)
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Indecision App</h1>
+        <p>What to do, what to do, what to do...</p>
+      </div>
+    );
+  }
+}
 
-const template = (
+class Action extends React.Component {
+  render() {
+    return (
+      <div>
+        <button>Make decision</button>
+      </div>
+    );
+  }
+}
+
+class Options extends React.Component {
+  render() {
+    return (
+      <div>
+        <ol>
+          <li>item 1</li>
+          <li>item 2</li>
+        </ol>
+      </div>
+    );
+  }
+}
+
+class AddOption extends React.Component {
+  render() {
+    return (
+      <div>
+        <button>Add option</button>
+      </div>
+    );
+  }
+}
+
+const jsx = (
   <div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    {app.options.length > 0 ? options : <p>No options</p>}
+    <Header />
+    <Action />
+    <Options />
+    <AddOption />
   </div>
 );
 
-
-
-let count = 0;
-
-const increment = () => {
-  count++;
-  renderCounterApp();
-};
-
-const decrement = () => {
-  count--;
-  renderCounterApp();
-};
-
-const reset = () => {
-  count = 0;
-  renderCounterApp();
-};
-
-const appRoot = document.getElementById("app");
-
-const renderCounterApp = () => {
-  const templateTwo = (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={increment}>+1</button>
-      <button onClick={decrement}>-1</button>
-      <button onClick={reset}>Reset</button>
-    </div>
-  );
-  //ReactDOM.render(template, appRoot);
-  ReactDOM.render(templateTwo, appRoot);
-}
-
-renderCounterApp();
+ReactDOM.render(jsx, document.getElementById('app'));

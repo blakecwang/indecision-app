@@ -1,32 +1,61 @@
-let count = 0;
-
-const increment = () => {
-  count++;
-  renderCounterApp();
-};
-
-const decrement = () => {
-  count--;
-  renderCounterApp();
-};
-
-const reset = () => {
-  count = 0;
-  renderCounterApp();
-};
-
-const appRoot = document.getElementById("app");
-
-const renderCounterApp = () => {
-  const templateTwo = (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={increment}>+1</button>
-      <button onClick={decrement}>-1</button>
-      <button onClick={reset}>Reset</button>
-    </div>
-  );
-  //ReactDOM.render(template, appRoot);
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.title}</h1>
+      </div>
+    );
+  }
 }
 
-renderCounterApp();
+class Count extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>Count: {this.props.count}</h2>
+      </div>
+    );
+  }
+}
+
+class Button extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    const action = this.props.action;
+
+    if (action == -1) {
+      alert('decrement!');
+    } else if (action == 1) {
+      alert('increment!');
+    } else {
+      alert('reset!');
+    }
+  }
+  render() {
+    return <button onClick={this.handleClick}>{this.props.buttonText}</button>;
+  }
+}
+
+class CounterApp extends React.Component {
+  render() {
+    const title = 'My Counter App';
+    const count = 11;
+
+    return (
+      <div>
+        <Header title={title} />
+        <Count count={count} />
+        <div>
+          <Button buttonText="-1" action={-1} />
+          <Button buttonText="+1" action={1} />
+          <Button buttonText="reset" />
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<CounterApp />, document.getElementById('app'));

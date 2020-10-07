@@ -1,28 +1,32 @@
 class VisibilityApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleToggle = this.handleToggle.bind(this);
+  constructor (props) {
+    super(props)
+    this.handleToggle = this.handleToggle.bind(this)
     this.state = {
       isVisible: false
     }
   }
-  handleToggle() {
+
+  handleToggle () {
     this.setState((prevState) => {
-      return { isVisible: !prevState.isVisible };
-    });
+      return { isVisible: !prevState.isVisible }
+    })
   }
-  render() {
-    const title = "Toggle Visibility";
-    const details = "sweet deets";
+
+  render () {
+    const title = 'Toggle Visibility'
+    const details = 'sweet deets'
 
     return (
       <div>
         <h1>{title}</h1>
-        <button onClick={this.handleToggle}>{this.state.isVisible ? 'Hide' : 'Show'} details</button>
+        <button onClick={this.handleToggle}>
+          {this.state.isVisible ? 'Hide' : 'Show'} details
+        </button>
         {this.state.isVisible && <p>{details}</p>}
       </div>
     )
   }
 }
 
-ReactDOM.render(<VisibilityApp />, document.getElementById("app"));
+ReactDOM.render(<VisibilityApp />, document.getElementById('app'))

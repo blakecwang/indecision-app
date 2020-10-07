@@ -11,4 +11,9 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-rules: {}
+rules: {
+  'max-len': ['error']
+}
+globals:
+  React: readonly
+  ReactDOM: readonly

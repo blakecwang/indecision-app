@@ -1,8 +1,10 @@
+//import PropTypes from 'prop-types'
+
 class IndecisionApp extends React.Component {
-  render() {
-    const title = 'Indecision App';
-    const subtitle = 'What to do, what to do, what to do..';
-    const options = ['thing 1', 'thing 2'];
+  render () {
+    const title = 'Indecision App'
+    const subtitle = 'What to do, what to do, what to do..'
+    const options = ['thing 1', 'thing 2']
 
     return (
       <div>
@@ -11,76 +13,92 @@ class IndecisionApp extends React.Component {
         <Options options={options}/>
         <AddOption />
       </div>
-    );
+    )
   }
 }
 
 class Header extends React.Component {
-  render() {
+  render () {
     return (
       <div>
         <h1>{this.props.title}</h1>
         <p>{this.props.subtitle}</p>
       </div>
-    );
+    )
   }
 }
 
+// Header.propTypes = {
+//   title: PropTypes.string,
+//   subtitle: PropTypes.string
+// }
+
 class Action extends React.Component {
-  handlePick() {
-    alert('yo!');
+  handlePick () {
+    alert('yo!')
   }
-  render() {
+
+  render () {
     return (
       <div>
         <button onClick={this.handlePick}>Make decision</button>
       </div>
-    );
+    )
   }
 }
 
 class Options extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleRemoveAll = this.handleRemoveAll.bind(this);
+  constructor (props) {
+    super(props)
+    this.handleRemoveAll = this.handleRemoveAll.bind(this)
   }
-  handleRemoveAll() {
-    alert(this.props.options);
+
+  handleRemoveAll () {
+    alert(this.props.options)
   }
-  render() {
+
+  render () {
     return (
       <div>
         <button onClick={this.handleRemoveAll}>Remove all</button>
-          {
-            this.props.options.length > 0 ?
-              <ol>{
-                this.props.options.map(
-                  (option, i) => <Option key={i} optionText={option} />
-                )
-              }</ol>
-            :
-              <p>No options!</p>
-          }
+        {
+          this.props.options.length > 0
+            ? <ol>{
+              this.props.options.map(
+                (option, i) => <Option key={i} optionText={option} />
+              )
+            }</ol>
+            : <p>No options!</p>
+        }
       </div>
-    );
+    )
   }
 }
+
+// Options.propTypes = {
+//   options: PropTypes.array
+// }
 
 class Option extends React.Component {
-  render() {
-    return <li>{this.props.optionText}</li>;
+  render () {
+    return <li>{this.props.optionText}</li>
   }
 }
 
+// Option.propTypes = {
+//   optionText: PropTypes.string
+// }
+
 class AddOption extends React.Component {
-  handleFormSubmit(event) {
-    event.preventDefault();
-    const option = event.target.elements.option.value.trim();
+  handleFormSubmit (event) {
+    event.preventDefault()
+    const option = event.target.elements.option.value.trim()
     if (option) {
-      alert(option);
+      alert(option)
     }
   }
-  render() {
+
+  render () {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
@@ -88,8 +106,8 @@ class AddOption extends React.Component {
           <button>Add option</button>
         </form>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))

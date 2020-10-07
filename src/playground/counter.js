@@ -1,58 +1,38 @@
-class Header extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.title}</h1>
-      </div>
-    );
-  }
-}
-
-class Count extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2>Count: {this.props.count}</h2>
-      </div>
-    );
-  }
-}
-
-class Button extends React.Component {
+class CounterApp extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      count: 0
+    };
+    this.handlePlus = this.handlePlus.bind(this);
+    this.handleMinus = this.handleMinus.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
-  handleClick() {
-    const action = this.props.action;
-
-    if (action == -1) {
-      alert('decrement!');
-    } else if (action == 1) {
-      alert('increment!');
-    } else {
-      alert('reset!');
-    }
+  handlePlus() {
+    this.setState((prevState) => {
+      return { count: prevState.count + 1 } 
+    });
   }
-  render() {
-    return <button onClick={this.handleClick}>{this.props.buttonText}</button>;
+  handleMinus() {
+    this.setState((prevState) => {
+      return { count: prevState.count - 1 } 
+    });
   }
-}
-
-class CounterApp extends React.Component {
+  handleReset() {
+    this.setState(() => {
+      return { count: 0 } 
+    });
+  }
   render() {
     const title = 'My Counter App';
-    const count = 11;
 
     return (
       <div>
-        <Header title={title} />
-        <Count count={count} />
-        <div>
-          <Button buttonText="-1" action={-1} />
-          <Button buttonText="+1" action={1} />
-          <Button buttonText="reset" />
-        </div>
+        <h1>{title}</h1>
+        <h2>Count: {this.state.count}</h2>
+        <button onClick={this.handlePlus}>+1</button>
+        <button onClick={this.handleMinus}>-1</button>
+        <button onClick={this.handleReset}>Reset</button>
       </div>
     );
   }

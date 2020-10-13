@@ -2,11 +2,12 @@
   "name": "indecision-app",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "Blake Wang",
   "license": "MIT",
   "dependencies": {
     "react": "15.6.1",
-    "react-dom": "15.6.1"
+    "react-dom": "15.6.1",
+    "react-modal": "2.2.2"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",

@@ -3,14 +3,10 @@ import React from 'react'
 const Action = (props) => (
   <div>
     <button
+      className="big-button"
       disabled={props.noOptions}
       onClick={props.handleMakeDecision}>
-      Make decision
-    </button>
-    <button
-      disabled={props.noOptions}
-      onClick={props.handleRemoveAll}>
-      Remove all
+      What should I do?
     </button>
   </div>
 )

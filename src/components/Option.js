@@ -7,9 +7,9 @@ class Option extends React.Component {
 
   render () {
     return (
-      <li>
-        {this.props.optionText}
-        <button onClick={this.handleRemove}>X</button>
+      <li className="option">
+        {this.props.count + '. ' + this.props.optionText}
+        <button className="link-button"onClick={this.handleRemove}>X</button>
       </li>
     )
   }
